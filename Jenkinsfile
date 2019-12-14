@@ -4,14 +4,14 @@ pipeline {
 
     stages {
         stage('SCM Checkout'){
-          git 'https://github.com/prakashk0301/jenkins-example'
+          git 'https://github.com/vwsk-private/jenkins-example.git'
         }
   }
     {
         stage ('Compile Stage') {
 
             steps {
-                withMaven(maven : 'LocalMaven') {
+                withMaven(maven : 'localmaven') {
                     sh 'mvn clean compile'
                 }
             }
@@ -20,7 +20,7 @@ pipeline {
         stage ('Testing Stage') {
 
             steps {
-                withMaven(maven : 'LocalMaven') {
+                withMaven(maven : 'localmaven') {
                     sh 'mvn test'
                 }
             }
@@ -29,7 +29,7 @@ pipeline {
 
         stage ('install Stage') {
             steps {
-                withMaven(maven : 'LocalMaven') {
+                withMaven(maven : 'localmaven') {
                     sh 'mvn install'
                 }
             }
